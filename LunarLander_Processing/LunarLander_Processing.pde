@@ -1,5 +1,3 @@
-import processing.serial.*; 
-
 final float GRAVITY = 0.016;
 final float AIR = 0.99;
 final float TURN_VALUE = PI/40;
@@ -12,7 +10,7 @@ int PADHEIGHT = 10;
 float PADPOS = random(-100,100);  // position of pad
 float CRASHVEL = 0.3;  // threshold for crash velocity
 
-boolean[] keys = new boolean[4];
+boolean[] keys = new boolean[3];
 
 
 void setup() {
@@ -150,17 +148,14 @@ class Ship {
   }
   
   void move() {
-    speedy += GRAVITY; // gravity
-    speedx = speedx*AIR;    
-    speedy = speedy*AIR;
-    if (thruster) {
-      speedx += THRUST*cos(theta);
-      speedy += THRUST*sin(theta);
-    }
+    // ADD GRAVITY HERE
+    // ADD FRICTION HERE
+    //if (/* WHAT CONDITION */) {
+	// ADD THRUSTER HERE IN X AND Y
+    //}
     bounce();
     pos.x += speedx;    // move the ship in x and y
     pos.y += speedy;    
-    
     updatePoints();
   }
   
@@ -171,12 +166,8 @@ class Ship {
      And the y position by pos.y
   */
   void bounce() {
-    if(pos.x <= -width/2 || pos.x >= width/2) {
-      speedx = -speedx;
-    }
-    if(pos.y <= -height/2) {
-      speedy = -speedy;
-    }
+    // EXTENSION - ADD BOUNCE CODE HERE
+    // Remember how we bounced the ball....
   }
   
   void turns(float angle) {
