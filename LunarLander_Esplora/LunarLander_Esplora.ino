@@ -1,36 +1,30 @@
 #include <Esplora.h>
-
-
+ 
 void setup()
 {
   Serial.begin(9600);       // initialize serial communication with your computer
   Keyboard.begin();
 }
-
+ 
 void loop()
 {
-  int xValue = Esplora.readJoystickX();        // read the joystick's X position
-  int slider = Esplora.readSlider();
-  if (xValue < -50) {
-    Keyboard.press(KEY_RIGHT_ARROW);
+  // read the joystick
+  if (/* SOME CONDITION */) {
+    // PRESS A KEY TO TURN ONE WAY
   }
-  else if (xValue > 50) {
-    Keyboard.press(KEY_LEFT_ARROW);
-  }
-  else {
-    Keyboard.release(KEY_RIGHT_ARROW);
-    Keyboard.release(KEY_LEFT_ARROW);
-  }
-  if(Esplora.readButton(1) == LOW) {
-    Keyboard.press(KEY_UP_ARROW);
-    Esplora.writeRed(150);
+  else if (/* SOME OTHER CONDITION */) {
+    // PRESS A DIFFERENT KEY TO TURN THE OTHER WAY
   }
   else {
-    Keyboard.release(KEY_UP_ARROW);
-    Esplora.writeRed(0);
+    //Keyboard.release(FIRST_KEY);
+    //Keyboard.release(SECOND_KEY);
   }
-  Serial.print(slider);
-  Serial.println();
+  if(/* ANOTHER CONDITION */) {
+    // PRESS THE THRUSTER KEY
+  }
+  else {
+    // RELEASE THE THRUSTER KEY
+  }
   delay(15);
-}
 
+}
